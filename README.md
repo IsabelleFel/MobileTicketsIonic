@@ -30,6 +30,3 @@ src/
 ├── assets/
 └── environments/
 
-## Imagens
-
-![Teçao]
