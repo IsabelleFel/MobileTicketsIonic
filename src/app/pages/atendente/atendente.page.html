@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>👩‍⚕️ Atendente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button expand="block" color="primary" [disabled]="!!emAtendimento" (click)="chamarProximo()">
+    <ion-icon name="arrow-forward-circle-outline" slot="start"></ion-icon>
+    Chamar Próximo
+  </ion-button>
+
+  <ion-card *ngIf="emAtendimento" color="light" style="margin-top: 20px;">
+    <ion-card-header>
+      <ion-card-title>Em atendimento agora:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h1 style="font-size: 2em;">{{ emAtendimento.numero }}</h1>
+      <p>Guichê: <strong>{{ emAtendimento.guiche }}</strong></p>
+      <p>Tipo: <strong>{{ emAtendimento.tipo }}</strong></p>
+      <p>TM estimado: <strong>{{ tmAtual | number:'1.0-1' }} min</strong></p>
+    </ion-card-content>
+
+    <div style="padding: 0 16px 16px;">
+      <ion-button expand="block" color="success" (click)="finalizarAtendimento()">
+        <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+        Finalizar Atendimento
+      </ion-button>
+    </div>
+  </ion-card>
+
+  <ion-item *ngIf="mensagem">
+    <ion-label color="warning">{{ mensagem }}</ion-label>
+  </ion-item>
+
+  <ion-button expand="block" color="danger" (click)="encerrarExpediente()" style="margin-top: 20px;">
+    Encerrar Expediente
+  </ion-button>
+</ion-content>

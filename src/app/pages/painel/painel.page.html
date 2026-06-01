@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>📺 Painel de Chamados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Últimas 5 senhas chamadas</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let t of ultimasChamadas; let i = index"
+              [color]="i === 0 ? 'warning' : ''">
+      <ion-label>
+        <h2>{{ t.numero }}</h2>
+        <p>Guichê {{ t.guiche }} — {{ t.dataAtendimento | date:'HH:mm:ss' }}</p>
+      </ion-label>
+      <ion-badge slot="end" [color]="getBadgeColor(t.tipo)">{{ t.tipo }}</ion-badge>
+    </ion-item>
+
+    <ion-item *ngIf="ultimasChamadas.length === 0">
+      <ion-label>Nenhuma senha chamada ainda.</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Filas -->
+  <ion-card>
+    <ion-card-header><ion-card-title>Senhas na fila</ion-card-title></ion-card-header>
+    <ion-card-content>
+      <p>🔴 SP: {{ filas.SP }}</p>
+      <p>🔵 SG: {{ filas.SG }}</p>
+      <p>🟢 SE: {{ filas.SE }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

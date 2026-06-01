@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>🎫 Retirar Senha</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card button (click)="emitir('SP')">
+          <ion-card-header color="danger">
+            <ion-card-title>🔴 Prioritária</ion-card-title>
+            <ion-card-subtitle>Senha SP</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>Idosos, gestantes e deficientes</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card button (click)="emitir('SG')">
+          <ion-card-header color="primary">
+            <ion-card-title>🔵 Geral</ion-card-title>
+            <ion-card-subtitle>Senha SG</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>Atendimento padrão</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card button (click)="emitir('SE')">
+          <ion-card-header color="success">
+            <ion-card-title>🟢 Retirar Exame</ion-card-title>
+            <ion-card-subtitle>Senha SE</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>Apenas retirada de resultados</ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Comprovante -->
+  <ion-card *ngIf="ultimaSenha" color="light">
+    <ion-card-header>
+      <ion-card-title>✅ Sua senha foi emitida!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h1 style="font-size: 2em; font-weight: bold;">{{ ultimaSenha.numero }}</h1>
+      <p>Tipo: <strong>{{ ultimaSenha.tipo }}</strong></p>
+      <p>Emitida às: {{ ultimaSenha.dataEmissao | date:'HH:mm:ss' }}</p>
+      <p *ngIf="ultimaSenha.descartado" style="color: var(--ion-color-warning);">⚠️ Senha descartada automaticamente.</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

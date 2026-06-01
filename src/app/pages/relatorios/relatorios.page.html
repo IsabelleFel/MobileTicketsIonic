@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>📊 Relatórios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-segment [(ngModel)]="periodo">
+    <ion-segment-button value="diario">Diário</ion-segment-button>
+    <ion-segment-button value="mensal">Mensal</ion-segment-button>
+  </ion-segment>
+
+  <ion-card>
+    <ion-card-header><ion-card-title>Resumo Geral</ion-card-title></ion-card-header>
+    <ion-card-content>
+      <p>Total emitidas: <strong>{{ stats.totalEmitidas }}</strong></p>
+      <p>Total atendidas: <strong>{{ stats.totalAtendidas }}</strong></p>
+      <p>SP emitidas: <strong>{{ stats.spEmitidas }}</strong> | atendidas: <strong>{{ stats.spAtendidas }}</strong></p>
+      <p>SG emitidas: <strong>{{ stats.sgEmitidas }}</strong> | atendidas: <strong>{{ stats.sgAtendidas }}</strong></p>
+      <p>SE emitidas: <strong>{{ stats.seEmitidas }}</strong> | atendidas: <strong>{{ stats.seAtendidas }}</strong></p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header><ion-label>Detalhamento</ion-label></ion-list-header>
+    <ion-item *ngFor="let t of historico">
+      <ion-label>
+        <h3>{{ t.numero }}</h3>
+        <p>Emitida: {{ t.dataEmissao | date:'dd/MM HH:mm' }}</p>
+        <p *ngIf="t.atendido">Atendida: {{ t.dataAtendimento | date:'dd/MM HH:mm' }} — Guichê {{ t.guiche }}</p>
+        <p *ngIf="!t.atendido" style="color: orange;">Não atendida / Descartada</p>
+      </ion-label>
+      <ion-badge slot="end" [color]="getBadge(t.tipo)">{{ t.tipo }}</ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>
