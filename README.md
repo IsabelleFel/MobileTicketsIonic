@@ -19,7 +19,6 @@ Aplicativo mobile de **controle de atendimento em filas**, desenvolvido com **Io
 # Regras de Negócio
 
 - Expediente: **07h00 às 17h00** — senhas restantes são descartadas ao encerrar
-- **5%** das senhas emitidas são abandonadas pelo cliente
 - Qualquer guichê atende qualquer tipo de senha
 - O painel exibe apenas as **5 últimas senhas chamadas**
 
