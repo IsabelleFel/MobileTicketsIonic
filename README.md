@@ -28,8 +28,10 @@ Ionic Framework, Angular, Typescript e Node.js.
 
 # Como Executar o Projeto
 # Pré-requisitos:
-Instalar dependências com:
+Instalar dependências:
+
 npm install
+
 Node.js e Ionic CLI;
 
 Configurando e Rodando o Frontend (Ionic) Abra um novo terminal na pasta raiz do projeto MobileTicketsIonic. Inicie a aplicação no navegador com: ionic serve
